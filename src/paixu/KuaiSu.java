@@ -1,6 +1,9 @@
 package paixu;
 
-public class PaiXu {
+/**
+ * - 快速排序算法的时间复杂度，有时候是O(n * lgn), 有时候就是O(n2),
+ * */
+public class KuaiSu {
 
 	public static void main (String agrs[]){
 		
@@ -9,7 +12,7 @@ public class PaiXu {
 		System.out.print(a[0]+","+a[1]+","+a[2]+","+a[3]+","+a[4]+","+a[5]+","+a[6]+","+a[7]+","+a[8]+","+a[9]+",");
 	}
 	
-	
+
  static	void quick_sort(int s[], int l, int r)  
 	{  
 	    if (l < r)  
@@ -37,7 +40,37 @@ public class PaiXu {
 	        quick_sort(s, l, i - 1); // 递归调用   
 	        quick_sort(s, i + 1, r);  
 	    }  
-	}  
+	 
+	 /* i = left;
+	 j = right;
+	 x = s[i];
+	 if(i<j){
+		 while(i<j)while(i<j && s[j] >= x ){//从左向右寻找比x小的第一个数
+			 j--;
+		 }
+		 if(i<j){
+			 s[i] = s[j];
+			 i++;
+		 }
+		 
+		 while(i<j && s[i] <= x){//从右向左寻找比x大的第一个数
+			 i++;
+		 }
+		 if(i<j){
+			 s[j] = s[i];
+			 j++;
+			 
+		 }
+		 
+	 }
+	 
+	 s[i]= x;
+	
+	 quick_sort(s, left, i - 1); // 递归调用   
+     quick_sort(s, i + 1, right);  
+	 
+	}  */
 	
 	
+}
 }
