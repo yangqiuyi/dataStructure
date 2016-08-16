@@ -1,9 +1,12 @@
 package paixu;
 
-/**
+/**快速排序:  采用分治的思想，从待排序的数据中选一个数作为基数（一般是第一个数）,
+ *          分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。
+ *          再对左右区间重复第二步，直到各区间只有一个数。
  * - 快速排序算法的时间复杂度，有时候是O(n * lgn), 有时候就是O(n2),
  * */
 public class KuaiSu {
+	
 
 	public static void main (String agrs[]){
 		
@@ -13,64 +16,38 @@ public class KuaiSu {
 	}
 	
 
- static	void quick_sort(int s[], int l, int r)  
+ static	void quick_sort(int s[], int left, int right)  
 	{  
-	    if (l < r)  
+	    if (left < right)  
 	    {  
 	        //Swap(s[l], s[(l + r) / 2]); //将中间的这个数和第一个数交换 参见注1  
-	        int i = l, j = r, x = s[l];  
-	        while (i < j)  
+	        int l = left;
+	        int r = right;
+	        int temp = s[left];  
+	        
+	        while (l < r)  
 	        {  
-	            while(i < j && s[j] >= x) // 从右向左找第一个小于x的数  
-	                j--;    
+	            while(l < r && s[r] >= temp) // 从右向左找第一个小于x的数  
+	                r--;    
 	            
-	            if(i < j)   //如果找到了比x小的数，则把这个数放进坑，并i++
-	                s[i++] = s[j];  
+	            if(l < r)   //如果找到了比x小的数，则把这个数放进坑，并i++
+	                s[l++] = s[r];  
 	              
-	            while(i < j && s[i] < x) // 从左向右找第一个大于等于x的数  
-	                i++;   
+	            while(l < r && s[l] < temp) // 从左向右找第一个大于等于x的数  
+	                l++;   
 	            
-	            if(i < j)   
-	                s[j--] = s[i];  
+	            if(l < r)   
+	                s[r--] = s[l];  
 	        }  
+	        //退出时，i等于j。将x填到这个坑中。
+	        s[l] = temp;  
 	        
-	        s[i] = x;  
 	        
-	        
-	        quick_sort(s, l, i - 1); // 递归调用   
-	        quick_sort(s, i + 1, r);  
+	        quick_sort(s, left, l - 1); // 递归调用   
+	        quick_sort(s, l + 1, right);  
 	    }  
-	 
-	 /* i = left;
-	 j = right;
-	 x = s[i];
-	 if(i<j){
-		 while(i<j)while(i<j && s[j] >= x ){//从左向右寻找比x小的第一个数
-			 j--;
-		 }
-		 if(i<j){
-			 s[i] = s[j];
-			 i++;
-		 }
-		 
-		 while(i<j && s[i] <= x){//从右向左寻找比x大的第一个数
-			 i++;
-		 }
-		 if(i<j){
-			 s[j] = s[i];
-			 j++;
-			 
-		 }
-		 
-	 }
-	 
-	 s[i]= x;
-	
-	 quick_sort(s, left, i - 1); // 递归调用   
-     quick_sort(s, i + 1, right);  
-	 
-	}  */
 	
 	
 }
+
 }
